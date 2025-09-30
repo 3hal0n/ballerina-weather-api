@@ -39,6 +39,8 @@ function App() {
       
       if (response.ok) {
         setWeather(data)
+        console.log('Weather data received:', data) // Debug log
+        console.log('Temperature type:', typeof data.temperature, 'Value:', data.temperature) // Debug log
         saveRecentSearch(cityName)
       } else {
         setError(data.message || 'Failed to fetch weather data')
@@ -141,7 +143,9 @@ function App() {
               </h2>
               <div className="mb-4">
                 <span className="text-5xl font-bold text-blue-600">
-                  {Math.round(weather.temperature)}°C
+                  {typeof weather.temperature === 'number' && !isNaN(weather.temperature) 
+                    ? Math.round(weather.temperature) 
+                    : 'N/A'}°C
                 </span>
               </div>
               <p className="text-gray-600 text-lg capitalize mb-4">
