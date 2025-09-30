@@ -38,6 +38,14 @@ type OpenWeatherMapResponse record {
 };
 
 // Weather service on port 8080
+@http:ServiceConfig {
+    cors: {
+        allowOrigins: ["http://localhost:5173"],
+        allowCredentials: false,
+        allowHeaders: ["CORELATION_ID", "Content-Type"],
+        allowMethods: ["GET", "POST", "OPTIONS"]
+    }
+}
 service /weather on new http:Listener(8080) {
     
     // GET endpoint for current weather

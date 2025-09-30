@@ -28,11 +28,10 @@ A simple Ballerina-based REST API service that provides current weather informat
 Edit the `Config.toml` file and replace `your_api_key_here` with your actual OpenWeatherMap API key:
 
 ```toml
-[ballerina/http]
 OPENWEATHER_API_KEY = "your_actual_api_key_here"
 ```
 
-### 3. Run the Service
+### 3. Run the Backend Service
 
 Navigate to the project directory and run:
 
@@ -41,6 +40,27 @@ bal run
 ```
 
 The service will start on port 8080.
+
+### 4. Run the Frontend (Optional)
+
+For the complete user experience with the React frontend:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The frontend will be available at `http://localhost:5173`
+
+## Quick Start
+
+For the fastest setup:
+
+1. **Get API Key**: Sign up at https://openweathermap.org/api
+2. **Configure**: Update `Config.toml` with your API key  
+3. **Start Backend**: Run `bal run` (service on port 8080)
+4. **Start Frontend**: In `frontend/` directory, run `npm install && npm run dev` (UI on port 5173)
 
 ## API Usage
 
@@ -85,12 +105,41 @@ curl "http://localhost:8080/weather/current?city=London"
 ## Project Structure
 
 ```
-weatherAPI/
+ballerina-weather-api/
 ├── Ballerina.toml     # Project configuration
 ├── Config.toml        # API key configuration
 ├── main.bal          # Main service implementation
+├── frontend/          # React frontend application
+│   ├── src/
+│   │   ├── App.jsx    # Main weather component
+│   │   ├── App.css    # App styles
+│   │   ├── main.jsx   # React entry point
+│   │   └── index.css  # Tailwind CSS imports
+│   ├── package.json   # Frontend dependencies
+│   └── README.md      # Frontend documentation
 └── README.md         # This file
 ```
+
+## Frontend Application
+
+This project includes a modern React frontend that provides a user-friendly interface for the weather API.
+
+### Features:
+- **Modern UI**: Clean, responsive design with Tailwind CSS
+- **Real-time Search**: Instant weather data for any city
+- **Recent Searches**: Automatically saves your last 5 searches
+- **Error Handling**: Comprehensive error messages and loading states
+- **Mobile Responsive**: Works seamlessly on all devices
+
+### Running the Frontend:
+
+1. **Start the Backend**: Make sure the Ballerina service is running on port 8080
+2. **Navigate to Frontend**: `cd frontend`
+3. **Install Dependencies**: `npm install`
+4. **Start Development Server**: `npm run dev`
+5. **Open Browser**: Visit `http://localhost:5173`
+
+See `frontend/README.md` for detailed frontend documentation.
 
 ## API Integration Details
 
