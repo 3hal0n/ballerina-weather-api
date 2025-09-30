@@ -1,3 +1,18 @@
+# Environment files (contains API keys)
 .env
+Config.toml
+
+# Dependencies
 node_modules
+
+# Build output
 dist
+target/
+
+# IDE files
+.vscode/
+.idea/
+
+# OS files
+.DS_Store
+Thumbs.db

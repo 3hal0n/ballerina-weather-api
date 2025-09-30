@@ -1,8 +1,9 @@
 import ballerina/http;
 import ballerina/log;
+import ballerina/os;
 
-// Configuration for OpenWeatherMap API key
-configurable string OPENWEATHER_API_KEY = ?;
+// Configuration for OpenWeatherMap API key - reads from environment variable or config
+string OPENWEATHER_API_KEY = os:getEnv("OPENWEATHER_API_KEY");
 
 // OpenWeatherMap API base URL
 const string OPENWEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";

@@ -1,0 +1,5 @@
+# Configuration template for Weather API
+# Copy this to Config.toml and add your actual API key
+# Or use environment variables as described in README.md
+
+# OPENWEATHER_API_KEY = "your_api_key_here"

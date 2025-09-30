@@ -23,17 +23,39 @@ A simple Ballerina-based REST API service that provides current weather informat
 2. Sign up for a free account
 3. Generate an API key from your dashboard
 
-### 2. Configure the API Key
+### 2. Configure the API Key (Secure Methods)
 
-Edit the `Config.toml` file and replace `your_api_key_here` with your actual OpenWeatherMap API key:
+Choose one of these secure methods to configure your API key:
 
+#### **Method A: Environment Variable (Recommended)**
+
+1. Create a `.env` file in the project root:
+```env
+OPENWEATHER_API_KEY=your_actual_api_key_here
+```
+
+2. Run using the PowerShell script:
+```powershell
+.\start-service.ps1
+```
+
+Or manually set the environment variable:
+```powershell
+$env:OPENWEATHER_API_KEY="your_actual_api_key_here"
+bal run
+```
+
+#### **Method B: Config File (Alternative)**
+
+1. Copy the template: `copy Config.toml.template Config.toml`
+2. Edit `Config.toml` and add your API key:
 ```toml
 OPENWEATHER_API_KEY = "your_actual_api_key_here"
 ```
 
-### 3. Run the Backend Service
+⚠️ **Security Note**: `Config.toml` is in `.gitignore` to prevent committing API keys.
 
-Navigate to the project directory and run:
+### 3. Run the Backend Service
 
 ```bash
 bal run
