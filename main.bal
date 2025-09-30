@@ -25,20 +25,14 @@ type ErrorResponse record {
 
 // OpenWeatherMap API response structure (simplified)
 type OpenWeatherMapResponse record {
+    string name?;
     record {
-        string name;
-    } name?;
-    record {
-        record {
-            float temp;
-        } main;
+        float temp;
     } main?;
     record {
-        record {
-            string main;
-            string description;
-        }[] weather;
-    } weather?;
+        string main;
+        string description;
+    }[] weather?;
     string message?;
     int cod?;
 };
@@ -103,9 +97,17 @@ service /weather on new http:Listener(8080) {
         }
 
         // Extract and validate required fields
-        string? cityName = weatherData?.name?.name;
-        float? temperature = weatherData?.main?.main?.temp;
-        string? description = weatherData?.weather?.weather?[0]?.description;
+        string? cityName = weatherData?.name;
+        float? temperature = weatherData?.main?.temp;
+        string? description = ();
+        
+        // Safely extract weather description from array
+        if weatherData?.weather is record {string main; string description;}[] {
+            record {string main; string description;}[]? weatherArray = weatherData?.weather;
+            if weatherArray is record {string main; string description;}[] && weatherArray.length() > 0 {
+                description = weatherArray[0].description;
+            }
+        }
 
         if cityName is () || temperature is () || description is () {
             return <ErrorResponse>{
