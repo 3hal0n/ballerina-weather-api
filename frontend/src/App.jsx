@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import './App.css'
-import Galaxy from './components/Galaxy'
+import Lightning from './components/Lightning'
 
 function App() {
   const [city, setCity] = useState('')
@@ -66,9 +66,9 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-blue-400 via-blue-500 to-blue-600">
-      {/* Background galaxy canvas */}
-      <Galaxy density={1.2} glowIntensity={0.35} saturation={0.2} hueShift={210} />
+    <div className="min-h-screen relative overflow-hidden bg-black">
+      {/* Background lightning canvas */}
+      <Lightning hue={220} xOffset={0} speed={1} intensity={1} size={1} />
 
       <div className="container relative z-10 mx-auto px-4 py-8">
         {/* Header */}
