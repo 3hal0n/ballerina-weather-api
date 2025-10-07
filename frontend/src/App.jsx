@@ -170,9 +170,9 @@ function App() {
             <div className="bg-blue-500 bg-opacity-20 rounded-lg p-6 text-white">
               <h3 className="text-lg font-semibold mb-2">How to use:</h3>
               <ol className="text-left text-sm space-y-1">
-                <li>1. Make sure the Ballerina weather service is running on port 8080</li>
-                <li>2. Enter a city name in the search box</li>
-                <li>3. Click "Search" to get current weather information</li>
+                
+                <li> Enter a city name in the search box</li>
+                <li> Click "Search" to get current weather information</li>
               </ol>
             </div>
           </div>
