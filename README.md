@@ -317,6 +317,17 @@ npm run preview
 cd frontend && npm run dev
 ```
 
+### GitHub Actions / CI notes
+
+If you enable the included GitHub Actions workflow that deploys the frontend to Vercel, make sure the following repository secrets are configured in your GitHub repo settings:
+
+- `VERCEL_TOKEN` — your Vercel personal token
+- `VERCEL_ORG_ID` — Vercel organization id
+- `VERCEL_PROJECT_ID` — Vercel project id
+
+Without those secrets the action will fail with a missing input error. The workflow has been updated to pass `--prod` using `vercel-args`.
+
+
 ### **Docker Deployment**
 ```dockerfile
 # Ballerina service containerization
@@ -343,7 +354,15 @@ spec:
     cpu: "250m"
 ```
 
-## 🔐 **Security Best Practices**
+## �️ Future work
+
+- Add optional backend deployment CI/CD: A GitHub Actions workflow to build the Ballerina service and trigger a redeploy (Render, Railway, or a container registry + cloud). This was previously present but removed because backend deployment is not needed right now. When you're ready, we can re-add a workflow that:
+  - Installs Ballerina on the runner
+  - Runs `bal build`
+  - Triggers a platform deploy (Render API, Docker push, or similar)
+
+
+## �🔐 **Security Best Practices**
 
 ### **API Key Management**
 - ✅ Environment variables for sensitive data

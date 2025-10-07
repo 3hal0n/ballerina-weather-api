@@ -30,4 +30,5 @@ jobs:
           vercel-org-id: ${{ secrets.VERCEL_ORG_ID }}
           vercel-project-id: ${{ secrets.VERCEL_PROJECT_ID }}
           working-directory: frontend
-          prod: true
+          # Use vercel-args to pass --prod for a production deployment
+          vercel-args: '--prod'
