@@ -175,13 +175,8 @@ api:
                               │
                               ▼
                     ┌─────────────────┐
-                    │ WSO2 API Manager│
-                    │   (Optional)    │
-                    │                 │
-                    │ • Gateway       │
-                    │ • Security      │
-                    │ • Analytics     │
-                    │ • Dev Portal    │
+                    │API Gateway (opt)│
+                    │ (WSO2 API Mgr)  │
                     └─────────────────┘
 ```
 

@@ -1,0 +1,33 @@
+name: Deploy Backend to Render
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Ballerina
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y wget unzip
+          wget https://dist.ballerina.io/2201.8.0/ballerina-linux-installer-x64-2201.8.0.bin -O ballerina-installer.bin
+          chmod +x ballerina-installer.bin
+          sudo ./ballerina-installer.bin -- -d /usr/lib/ballerina
+          echo "/usr/lib/ballerina/bin" >> $GITHUB_PATH
+
+      - name: Build Backend
+        run: |
+          bal build
+
+      - name: Trigger Render Deploy (via API)
+        env:
+          RENDER_API_KEY: ${{ secrets.RENDER_API_KEY }}
+        run: |
+          # Trigger redeploy of service (replace SERVICE_ID with your Render service id)
+          curl -X POST "https://api.render.com/deploy/svc-<SERVICE_ID>" \
+            -H "Authorization: Bearer $RENDER_API_KEY" \
+            -H "Accept: application/json"

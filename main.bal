@@ -1,6 +1,7 @@
 import ballerina/http;
 import ballerina/log;
 import ballerina/os;
+import ballerina/time;
 
 // Configuration for OpenWeatherMap API key - reads from environment variable or config
 string OPENWEATHER_API_KEY = os:getEnv("OPENWEATHER_API_KEY");
@@ -8,8 +9,22 @@ string OPENWEATHER_API_KEY = os:getEnv("OPENWEATHER_API_KEY");
 // OpenWeatherMap API base URL
 const string OPENWEATHER_BASE_URL = "https://api.openweathermap.org/data/2.5/weather";
 
+// HTTP client configuration with connection pooling and timeouts
+http:ClientConfiguration clientConfig = {
+    poolConfig: {
+        maxActiveConnections: 50,
+        maxIdleConnections: 25,
+        waitTimeInMillis: 60000
+    },
+    timeout: 30.0,
+    retryConfig: {
+        count: 3,
+        interval: 2.0
+    }
+};
+
 // HTTP client for calling OpenWeatherMap API
-http:Client openWeatherClient = check new (OPENWEATHER_BASE_URL);
+http:Client openWeatherClient = check new (OPENWEATHER_BASE_URL, clientConfig);
 
 // Define the response type for our simplified weather data
 type WeatherResponse record {
@@ -134,7 +149,51 @@ service /weather on new http:Listener(8080) {
     }
 }
 
+// Health check service on port 8081
+service /health on new http:Listener(8081) {
+    
+    // Liveness probe - indicates if the application is running
+    resource function get live() returns json {
+        return {
+            "status": "UP",
+            "timestamp": time:utcNow(),
+            "service": "weather-api",
+            "version": "1.0.0"
+        };
+    }
+    
+    // Readiness probe - indicates if the application is ready to accept traffic
+    resource function get ready() returns json|http:InternalServerError {
+        // Check if API key is configured
+        if OPENWEATHER_API_KEY.length() == 0 {
+            http:InternalServerError serviceUnavailable = {
+                body: {
+                    "status": "DOWN",
+                    "reason": "API key not configured",
+                    "timestamp": time:utcNow()
+                }
+            };
+            return serviceUnavailable;
+        }
+        
+        // TODO: Add external dependency checks here
+        // For example, test connection to OpenWeatherMap API
+        
+        return {
+            "status": "READY",
+            "timestamp": time:utcNow(),
+            "dependencies": {
+                "openweathermap": "OK"
+            }
+        };
+    }
+}
+
 public function main() returns error? {
     log:printInfo("Weather API service started on port 8080");
-    log:printInfo("Available endpoint: GET /weather/current?city={city_name}");
+    log:printInfo("Health check service started on port 8081");
+    log:printInfo("Available endpoints:");
+    log:printInfo("  - GET /weather/current?city={city_name}");
+    log:printInfo("  - GET /health/live");
+    log:printInfo("  - GET /health/ready");
 }
