@@ -1,4 +1,4 @@
-# 🌤️ Weather API Service with WSO2 Ballerina
+# Weather API Service with WSO2 Ballerina
 
 [![Ballerina](https://img.shields.io/badge/Ballerina-2201.8.0-blue.svg)](https://ballerina.io/)
 [![React](https://img.shields.io/badge/React-19.1.1-61DAFB.svg)](https://reactjs.org/)
@@ -6,11 +6,11 @@
 
 A modern, cloud-native weather API service built with **WSO2 Ballerina** and featuring a responsive React frontend. This project demonstrates enterprise-grade API development using WSO2's open-source technology stack.
 
-## 🏗️ **WSO2 Technology Stack**
+## **WSO2 Technology Stack**
 
 This project showcases several WSO2 technologies and best practices:
 
-### **🎯 Primary WSO2 Products Used:**
+### ** Primary WSO2 Products Used:**
 
 - **[WSO2 Ballerina](https://ballerina.io/)** - Cloud-native programming language for integration
   - Type-safe HTTP service development
@@ -24,7 +24,7 @@ This project showcases several WSO2 technologies and best practices:
   - Developer portal compatibility
   - Analytics and monitoring ready
 
-### **🔧 Ballerina Features Demonstrated:**
+### ** Ballerina Features Demonstrated:**
 
 - **HTTP Services**: RESTful API with built-in CORS support
 - **Error Handling**: Comprehensive error management with typed responses
@@ -33,28 +33,28 @@ This project showcases several WSO2 technologies and best practices:
 - **Type Safety**: Strong typing for API contracts and data structures
 - **Client Generation**: HTTP client for external API integration
 
-## 🌟 **Features**
+##  **Features**
 
 ### **Backend (WSO2 Ballerina)**
-- ✅ RESTful weather API service
-- ✅ Integration with OpenWeatherMap API
-- ✅ Comprehensive error handling and validation
-- ✅ CORS support for cross-origin requests
-- ✅ Environment-based configuration
-- ✅ Built-in observability and logging
-- ✅ Type-safe JSON processing
-- ✅ Production-ready HTTP service
+-  RESTful weather API service
+-  Integration with OpenWeatherMap API
+-  Comprehensive error handling and validation
+-  CORS support for cross-origin requests
+-  Environment-based configuration
+-  Built-in observability and logging
+-  Type-safe JSON processing
+-  Production-ready HTTP service
 
 ### **Frontend (React)**
-- ✅ Modern React 19 with hooks
-- ✅ Responsive design with Tailwind CSS v4
-- ✅ Real-time weather search
-- ✅ Local storage for recent searches
-- ✅ Comprehensive error handling
-- ✅ Loading states and user feedback
-- ✅ Mobile-optimized interface
+-  Modern React 19 with hooks
+-  Responsive design with Tailwind CSS v4
+-  Real-time weather search
+-  Local storage for recent searches
+-  Comprehensive error handling
+-  Loading states and user feedback
+-  Mobile-optimized interface
 
-## 🚀 **Quick Start**
+##  **Quick Start**
 
 ### **Prerequisites**
 
@@ -108,11 +108,11 @@ npm run dev
 
 The React app will be available at **http://localhost:5173** (or 5174 if 5173 is busy).
 
-## 📊 **WSO2 API Manager Integration**
+##  **WSO2 API Manager Integration**
 
 This Ballerina service is designed for seamless integration with WSO2 API Manager:
 
-### **🎯 API Management Features:**
+### ** API Management Features:**
 
 1. **API Gateway Integration**
    ```bash
@@ -137,7 +137,7 @@ This Ballerina service is designed for seamless integration with WSO2 API Manage
    - Error rate tracking
    - Business analytics
 
-### **🔒 Enterprise Security Features:**
+### ** Enterprise Security Features:**
 
 - **Authentication**: OAuth, API Key, JWT support
 - **Authorization**: Role-based access control
@@ -145,7 +145,7 @@ This Ballerina service is designed for seamless integration with WSO2 API Manage
 - **Data Security**: Request/response transformation
 - **Audit Logging**: Complete API access logs
 
-### **📈 Production Deployment:**
+### ** Production Deployment:**
 
 ```yaml
 # WSO2 API Manager Configuration
@@ -161,7 +161,7 @@ api:
     requests_per_minute: 1000
 ```
 
-## 🏛️ **Architecture Overview**
+##  **Architecture Overview**
 
 ```
 ┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
@@ -180,7 +180,7 @@ api:
                     └─────────────────┘
 ```
 
-## 📡 **API Documentation**
+##  **API Documentation**
 
 ### **Endpoint**
 ```
@@ -219,18 +219,18 @@ GET /weather/current?city={city_name}
 | 502  | Bad Gateway (external API error)        |
 | 503  | Service Unavailable (API unreachable)   |
 
-## 🗂️ **Project Structure**
+##  **Project Structure**
 
 ```
 ballerina-weather-api/
-├── 📁 WSO2 Ballerina Backend
+├──  WSO2 Ballerina Backend
 │   ├── main.bal              # Main service implementation
 │   ├── Ballerina.toml        # Project metadata & dependencies
 │   ├── Dependencies.toml     # Auto-generated dependencies
 │   ├── Config.toml.template  # Configuration template
 │   └── start-service.ps1     # Windows startup script
 │
-├── 📁 React Frontend
+├──  React Frontend
 │   ├── src/
 │   │   ├── App.jsx           # Main weather component
 │   │   ├── main.jsx          # React entry point
@@ -238,17 +238,17 @@ ballerina-weather-api/
 │   ├── package.json          # Dependencies
 │   └── vite.config.js        # Build configuration
 │
-├── 📁 Security & Config
+├──  Security & Config
 │   ├── .env                  # Environment variables (gitignored)
 │   ├── .gitignore           # Git ignore rules
 │   └── Config.toml.template  # Secure config template
 │
-└── 📁 Documentation
+└──  Documentation
     ├── README.md             # This file
     └── frontend/README.md    # Frontend documentation
 ```
 
-## 🔧 **Development**
+##  **Development**
 
 ### **Backend Development (Ballerina)**
 
@@ -284,7 +284,7 @@ npm run build
 npm run preview
 ```
 
-## 🌐 **WSO2 Integration Scenarios**
+##  **WSO2 Integration Scenarios**
 
 ### **1. Microservices Architecture**
 - Deploy as a containerized Ballerina service
@@ -306,7 +306,7 @@ npm run preview
 - Add real-time weather alerts
 - Implement event streaming
 
-## 🚀 **Deployment Options**
+##  **Deployment Options**
 
 ### **Local Development**
 ```bash
@@ -354,7 +354,7 @@ spec:
     cpu: "250m"
 ```
 
-## �️ Future work
+##  Future work
 
 - Add optional backend deployment CI/CD: A GitHub Actions workflow to build the Ballerina service and trigger a redeploy (Render, Railway, or a container registry + cloud). This was previously present but removed because backend deployment is not needed right now. When you're ready, we can re-add a workflow that:
   - Installs Ballerina on the runner
@@ -362,25 +362,25 @@ spec:
   - Triggers a platform deploy (Render API, Docker push, or similar)
 
 
-## �🔐 **Security Best Practices**
+##  **Security Best Practices**
 
 ### **API Key Management**
-- ✅ Environment variables for sensitive data
-- ✅ `.env` file gitignored
-- ✅ Template configuration provided
-- ✅ No hardcoded secrets in code
+-  Environment variables for sensitive data
+-  `.env` file gitignored
+-  Template configuration provided
+-  No hardcoded secrets in code
 
 ### **CORS Configuration**
-- ✅ Explicit origin allowlist
-- ✅ Secure header validation
-- ✅ Method restrictions
+-  Explicit origin allowlist
+-  Secure header validation
+-  Method restrictions
 
 ### **Input Validation**
-- ✅ Parameter sanitization
-- ✅ Type-safe request handling
-- ✅ Comprehensive error responses
+-  Parameter sanitization
+-  Type-safe request handling
+-  Comprehensive error responses
 
-## 📈 **Monitoring & Observability**
+##  **Monitoring & Observability**
 
 ### **Built-in Ballerina Features**
 - **Logging**: Structured logging with configurable levels
@@ -393,7 +393,7 @@ spec:
 - **Choreo Observability**: Cloud-native monitoring
 - **ELK Stack**: Centralized logging with Elasticsearch
 
-## 🤝 **Contributing**
+##  **Contributing**
 
 ### **Development Setup**
 1. Fork the repository
@@ -408,7 +408,7 @@ spec:
 - Include unit tests for new features
 - Update documentation
 
-## 📚 **Learn More**
+##  **Learn More**
 
 ### **WSO2 Resources**
 - [Ballerina Documentation](https://ballerina.io/learn/)
@@ -421,11 +421,11 @@ spec:
 - [React Documentation](https://react.dev/)
 - [Tailwind CSS](https://tailwindcss.com/)
 
-## 📄 **License**
+##  **License**
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
-## 🙏 **Acknowledgments**
+##  **Acknowledgments**
 
 - **WSO2** for the amazing Ballerina language and API management tools
 - **OpenWeatherMap** for providing free weather data APIs
